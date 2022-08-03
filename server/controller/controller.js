@@ -32,6 +32,23 @@ exports.create =(req,res)=>{
 
 exports.find =(req,res)=>{
 
+    if(req.query.id){
+        const id= req.query.id;
+        Userdb.findById(id)
+        .then(data=>{
+            if(!data){
+                res.status(404).send({message:"Not found user"})
+            }
+            else{
+                res.send(data)
+            }
+        })
+        .catch(err=>{
+            res.status(500).send({message:"error with id"+id})
+        })
+
+    }else{
+
     Userdb.find()
     .then(user=>{
         res.send(user)
@@ -40,6 +57,7 @@ exports.find =(req,res)=>{
         res.status(500).send({message:err.message||"Error when retrieving information"})
     })
 
+}
 }
 
 //update a new user by using userId
