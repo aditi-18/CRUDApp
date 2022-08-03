@@ -32,6 +32,14 @@ exports.create =(req,res)=>{
 
 exports.find =(req,res)=>{
 
+    Userdb.find()
+    .then(user=>{
+        res.send(user)
+    })
+    .catch(err=>{
+        res.status(500).send({message:err.message||"Error when retrieving information"})
+    })
+
 }
 
 //update a new user by using userId
