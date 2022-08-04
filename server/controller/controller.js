@@ -28,6 +28,29 @@ exports.create =(req,res)=>{
 
 }
 
+//delete user with userid
+exports.delete=(req,res)=>{
+    const id =req.params.id;
+    
+    Userdb.findByIdAndDelete(id)
+    .then(data=>{
+        if(!data){
+        res.status(404).send({message:`Cannot delete id +{id}`})
+    }
+    else{
+        res.send({
+            message:"User deleted"
+        })
+    }
+    })
+    .catch(err=>{
+        res.status(500).send({
+            message:"cannot delete user id="+id
+        });
+    });
+    }
+    
+
 //retrieve and return users
 
 exports.find =(req,res)=>{
@@ -83,24 +106,16 @@ if(!data){
 })
 }
 
-//delete user with userid
-exports.delete=(req,res)=>{
-const id =req.params.id;
 
-Userdb.findByIdAndDelete(id)
-.then(data=>{
-    if(!data){
-    res.status(404).send({message:`Cannot delete id +{id}`})
-}
-else{
-    res.send({
-        message:"User deleted"
-    })
-}
-})
-.catch(err=>{
-    res.status(500).send({
-        message:"cannot delete user id="+id
-    });
-});
-}
+
+
+
+
+
+
+
+
+
+
+
+

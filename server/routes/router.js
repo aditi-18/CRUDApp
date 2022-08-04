@@ -10,12 +10,10 @@ route.get('/',services.homeRoutes);
  
   route.get('/update-user',services.update_user);
 
-  //api route
-
   route.post('/api/users',controller.create);
+  route.delete('/api/users/:id',controller.delete);
   route.get('/api/users',controller.find);
   route.put('/api/users/:id',controller.update);
-  route.delete('/api/users/:id',controller.delete);
 
 
 
