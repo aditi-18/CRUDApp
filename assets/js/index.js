@@ -15,7 +15,7 @@ $("#update_user").submit(function(event){
     console.log(dataUser);
 
     var request={
-        "url":`http://localhost:3000/api/users/${dataUser.id}`,
+        "url":`https://cruddb18.herokuapp.com/api/users/${dataUser.id}`,
         "method":"PUT",
         "data":dataUser
 
@@ -31,7 +31,7 @@ if(window.location.pathname=="/"){
         var idDelete=$(this).attr("data_id")
         
         var request={
-            "url":`http://localhost:3000/api/users/${idDelete}`,
+            "url":`https://cruddb18.herokuapp.com/api/users/${idDelete}`,
             "method":"DELETE",
         }
         if(confirm("Confirm if you want to delete the record?")){
